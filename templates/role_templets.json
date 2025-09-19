@@ -1,0 +1,78 @@
+{
+  "Software Engineer": {
+    "technical": [
+      {"question": "What programming languages are you comfortable with?", "weight": 10},
+      {"question": "Explain the difference between let, const, and var.", "weight": 9},
+      {"question": "How do you approach debugging in production?", "weight": 8},
+      {"question": "What design patterns have you used?", "weight": 8},
+      {"question": "Explain RESTful APIs and implementation.", "weight": 7},
+      {"question": "How do you optimize code performance?", "weight": 7},
+      {"question": "SQL vs NoSQL experience?", "weight": 6}
+    ],
+    "behavioral": [
+      {"question": "Tell me about a challenging project.", "weight": 5},
+      {"question": "How do you handle deadlines?", "weight": 4},
+      {"question": "Time you disagreed with a team member?", "weight": 4}
+    ]
+  },
+  "HR": {
+    "technical": [
+      {"question": "Experience with applicant tracking systems?", "weight": 10},
+      {"question": "How do you ensure employment law compliance?", "weight": 9},
+      {"question": "Employee onboarding programs experience?", "weight": 8},
+      {"question": "Metrics for recruitment effectiveness?", "weight": 8},
+      {"question": "Salary negotiation approach?", "weight": 7},
+      {"question": "Diversity hiring strategies?", "weight": 7}
+    ],
+    "behavioral": [
+      {"question": "Difficult employee relations situation?", "weight": 5},
+      {"question": "Managing confidential information?", "weight": 4},
+      {"question": "Mediated a conflict between employees?", "weight": 4}
+    ]
+  },
+  "Sales": {
+    "technical": [
+      {"question": "Sales methodologies you're familiar with?", "weight": 10},
+      {"question": "Cold calling and lead generation approach?", "weight": 9},
+      {"question": "CRM tools experience?", "weight": 8},
+      {"question": "Lead qualification process?", "weight": 8},
+      {"question": "Objection handling during sales?", "weight": 7},
+      {"question": "Sales forecasting experience?", "weight": 7}
+    ],
+    "behavioral": [
+      {"question": "Most challenging sales deal?", "weight": 5},
+      {"question": "Staying motivated during rejection?", "weight": 4},
+      {"question": "Exceeded sales targets time?", "weight": 4}
+    ]
+  },
+  "Product Manager": {
+    "technical": [
+      {"question": "Feature prioritization in roadmap?", "weight": 10},
+      {"question": "Product discovery frameworks?", "weight": 9},
+      {"question": "Customer feedback analysis approach?", "weight": 8},
+      {"question": "Success metrics definition?", "weight": 8},
+      {"question": "Agile methodologies experience?", "weight": 7},
+      {"question": "Balancing technical/business requirements?", "weight": 7}
+    ],
+    "behavioral": [
+      {"question": "Product launch you led?", "weight": 5},
+      {"question": "Stakeholder conflict handling?", "weight": 4},
+      {"question": "Product strategy pivot time?", "weight": 4}
+    ]
+  },
+  "Data Scientist": {
+    "technical": [
+      {"question": "Data analysis programming languages?", "weight": 10},
+      {"question": "Handling missing data in datasets?", "weight": 9},
+      {"question": "Supervised vs unsupervised learning?", "weight": 8},
+      {"question": "SQL querying experience?", "weight": 8},
+      {"question": "ML feature engineering approach?", "weight": 7},
+      {"question": "Visualization tools used?", "weight": 7}
+    ],
+    "behavioral": [
+      {"question": "Complex data analysis project led?", "weight": 5},
+      {"question": "Technical findings to non-technical communication?", "weight": 4},
+      {"question": "Analysis led to business decision?", "weight": 4}
+    ]
+  }
+}
