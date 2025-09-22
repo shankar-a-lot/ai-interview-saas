@@ -1,25 +1,37 @@
-import React from 'react'; // Comma has been removed from this line
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useAuth } from '../context/AuthContext';
+import { loginUser } from '../services/authService'; // Import our login service
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login } = useAuth(); // Get the global login function from context
+  const [formData, setFormData] = useState({ email: 'test@example.com', password: 'password' });
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Login attempt...');
-    
+    setIsLoading(true);
     toast.loading('Logging in...');
 
-    setTimeout(() => {
-      const mockUser = { name: 'Test User', email: 'test@example.com' };
-      login(mockUser);
-      toast.dismiss();
-      toast.success('Logged in successfully!');
-      navigate('/dashboard');
-    }, 1500);
+    // Call our new API service
+    const response = await loginUser(formData);
+    
+    toast.dismiss();
+
+    if (response.success) {
+      toast.success(response.message);
+      login(response.user); // Update the global state with the user info
+      navigate('/dashboard'); // Redirect to the dashboard
+    } else {
+      toast.error(response.message);
+    }
+    setIsLoading(false);
   };
 
   return (
@@ -31,15 +43,23 @@ const LoginPage = () => {
         <form onSubmit={handleSubmit}>
            <div className="mb-4">
             <label className="block font-poppins text-gray-300 mb-2" htmlFor="email">Email</label>
-            <input className="w-full bg-gray-700 border border-gray-600 rounded-lg py-2 px-3 text-white" type="email" id="email" defaultValue="test@example.com" />
+            <input 
+                className="w-full bg-gray-700 border border-gray-600 rounded-lg py-2 px-3 text-white" 
+                type="email" id="email" value={formData.email} onChange={handleChange} />
           </div>
           <div className="mb-6">
             <label className="block font-poppins text-gray-300 mb-2" htmlFor="password">Password</label>
-            <input className="w-full bg-gray-700 border border-gray-600 rounded-lg py-2 px-3 text-white" type="password" id="password" defaultValue="password" />
+            <input 
+                className="w-full bg-gray-700 border border-gray-600 rounded-lg py-2 px-3 text-white" 
+                type="password" id="password" value={formData.password} onChange={handleChange} />
           </div>
           <div className="text-center">
-            <button type="submit" className="w-full font-poppins bg-primary hover:bg-primary-hover text-white font-bold py-3 px-8 rounded-lg text-lg">
-              Log In
+            <button 
+                type="submit" 
+                className="w-full font-poppins bg-primary hover:bg-primary-hover text-white font-bold py-3 px-8 rounded-lg text-lg disabled:bg-gray-500"
+                disabled={isLoading}
+            >
+              {isLoading ? 'Logging In...' : 'Log In'}
             </button>
           </div>
         </form>

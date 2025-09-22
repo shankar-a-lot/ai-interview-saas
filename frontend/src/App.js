@@ -19,6 +19,11 @@ import EvaluationReportPage from './Pages/EvaluationReportPage';
 import InterviewPage from './Pages/InterviewPage';
 import ReportsPage from './Pages/ReportsPage';
 import CreateInterviewPage from './Pages/CreateInterviewPage';
+import SystemCheckPage from './Pages/SystemCheckPage';
+import JobListingsPage from './Pages/JobListingsPage';
+import ApplicationPage from './Pages/ApplicationPage';
+import CandidateDashboardPage from './Pages/CandidateDashboardPage';
+import AdminDashboardPage from './Pages/AdminDashboardPage';
 import './App.css';
 
 // --- Layout for Marketing Pages with Parallax Stars ---
@@ -64,6 +69,9 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
+            <Route path="/careers" element={<JobListingsPage />} />
+            <Route path="/apply/:jobId" element={<ApplicationPage />} /> 
+            <Route path="/my-applications" element={<CandidateDashboardPage />} />
           </Route>
 
           {/* --- Application Routes (Protected) --- */}
@@ -76,8 +84,12 @@ function App() {
                 <Route path="/reports" element={<ReportsPage />} />
                 <Route path="/report/:candidateId" element={<EvaluationReportPage />} />
                 <Route path="/create-interview" element={<CreateInterviewPage />} />
+                <Route path="/admin" element={<AdminDashboardPage />} />
               </Route>
           </Route>
+          {/* --- NEW Candidate Pre-Interview Route (Public) --- */}
+          <Route path="/system-check/:id" element={<SystemCheckPage />} />
+
 
           {/* --- Candidate Interview Route (Public) --- */}
           <Route path="/interview/:id" element={<InterviewPage />} />

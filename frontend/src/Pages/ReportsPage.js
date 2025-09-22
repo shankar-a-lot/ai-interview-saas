@@ -1,12 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { CSVLink } from 'react-csv'; // Import the CSVLink component
 
 // Sample data for a list of reports
 const reports = [
   { id: 101, candidate: 'Rakshita Gada', job: 'Senior Frontend Developer', score: 92 },
-  { id: 102, candidate: 'Prajwal Patil', job: 'Lead Backend Engineer', score: 88 },
+  { id: 102, candidate: 'Prawjal Patil', job: 'Lead Backend Engineer', score: 88 },
   { id: 103, candidate: 'Veerbhadrappa', job: 'UI/UX Designer', score: 95 },
+];
+
+// Define the headers for our CSV file
+const csvHeaders = [
+  { label: 'Candidate Name', key: 'candidate' },
+  { label: 'Position', key: 'job' },
+  { label: 'Overall Score', key: 'score' },
 ];
 
 const ReportsPage = () => {
@@ -16,11 +24,22 @@ const ReportsPage = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="mb-10">
-        <h1 className="font-poppins text-4xl font-bold text-white">Candidate Reports</h1>
-        <p className="font-roboto text-lg text-gray-400 mt-2">
-          Review the AI-generated evaluation reports for all candidates.
-        </p>
+      <div className="flex justify-between items-center mb-10">
+        <div>
+          <h1 className="font-poppins text-4xl font-bold text-white">Candidate Reports</h1>
+          <p className="font-roboto text-lg text-gray-400 mt-2">
+            Review and export AI-generated evaluation reports.
+          </p>
+        </div>
+        {/* This is the new Export button */}
+        <CSVLink 
+          data={reports} 
+          headers={csvHeaders}
+          filename={"candidate_reports.csv"}
+          className="font-poppins bg-primary hover:bg-primary-hover text-white font-bold py-3 px-6 rounded-lg text-lg"
+        >
+          Export to CSV
+        </CSVLink>
       </div>
 
       <div className="bg-gray-900 rounded-xl shadow-2xl overflow-hidden">
