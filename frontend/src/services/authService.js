@@ -18,8 +18,8 @@ export const loginUser = async (formData) => {
   await new Promise(resolve => setTimeout(resolve, 1500));
 
   // Simulate a successful login with correct mock credentials
-  if (formData.email === 'test@example.com' && formData.password === 'password') {
-    const mockUser = { name: 'Test User', email: 'test@example.com' };
+  if (formData.email === 'candidate@example.com' && formData.password === 'password') {
+    const mockUser = { name: 'Candidate', email: 'candidate@example.com' };
     return { success: true, message: "Logged in successfully!", user: mockUser };
   } else {
     // Simulate an error for incorrect credentials

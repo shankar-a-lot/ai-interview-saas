@@ -7,7 +7,7 @@ import { loginUser } from '../services/authService'; // Import our login service
 const LoginPage = () => {
   const navigate = useNavigate();
   const { login } = useAuth(); // Get the global login function from context
-  const [formData, setFormData] = useState({ email: 'test@example.com', password: 'password' });
+  const [formData, setFormData] = useState({ email: 'candidate@example.com', password: 'password' });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -27,7 +27,11 @@ const LoginPage = () => {
     if (response.success) {
       toast.success(response.message);
       login(response.user); // Update the global state with the user info
-      navigate('/dashboard'); // Redirect to the dashboard
+      if (formData.email === 'candidate@example.com') {
+        navigate('/candidate/dashboard'); // Redirect to candidate dashboard
+      } else {
+        navigate('/dashboard'); // Redirect to admin dashboard
+      }
     } else {
       toast.error(response.message);
     }

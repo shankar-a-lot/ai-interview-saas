@@ -19,11 +19,19 @@ import EvaluationReportPage from './Pages/EvaluationReportPage';
 import InterviewPage from './Pages/InterviewPage';
 import ReportsPage from './Pages/ReportsPage';
 import CreateInterviewPage from './Pages/CreateInterviewPage';
-import SystemCheckPage from './Pages/SystemCheckPage';
+import SystemCheckPage from './Candidate/SystemCheckPage';
 import JobListingsPage from './Pages/JobListingsPage';
 import ApplicationPage from './Pages/ApplicationPage';
 import CandidateDashboardPage from './Pages/CandidateDashboardPage';
 import AdminDashboardPage from './Pages/AdminDashboardPage';
+import CandidateDashboard from './Candidate/DashboardPage';
+import CandidateProfile from './Candidate/ProfilePage';
+import CandidateSettings from './Candidate/SettingsPage';
+import CandidateLayout from './Candidate/CandidateLayout';
+import NotificationsSettings from './Candidate/NotificationsSettings';
+import AccountSecuritySettings from './Candidate/AccountSecuritySettings';
+import ThemeSettings from './Candidate/ThemeSettings';
+import PracticePage from './Candidate/PracticePage';
 import './App.css';
 
 // --- Layout for Marketing Pages with Parallax Stars ---
@@ -70,7 +78,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/careers" element={<JobListingsPage />} />
-            <Route path="/apply/:jobId" element={<ApplicationPage />} /> 
+            <Route path="/apply/:jobId" element={<ApplicationPage />} />
             <Route path="/my-applications" element={<CandidateDashboardPage />} />
           </Route>
 
@@ -87,12 +95,18 @@ function App() {
                 <Route path="/admin" element={<AdminDashboardPage />} />
               </Route>
           </Route>
-          {/* --- NEW Candidate Pre-Interview Route (Public) --- */}
-          <Route path="/system-check/:id" element={<SystemCheckPage />} />
-
-
-          {/* --- Candidate Interview Route (Public) --- */}
-          <Route path="/interview/:id" element={<InterviewPage />} />
+          {/* --- Candidate Routes --- */}
+          <Route element={<CandidateLayout />}>
+            <Route path="/candidate/dashboard" element={<CandidateDashboard />} />
+            <Route path="/candidate/profile" element={<CandidateProfile />} />
+            <Route path="/candidate/settings" element={<CandidateSettings />} />
+            <Route path="/candidate/system-check/:id" element={<SystemCheckPage />} />
+            <Route path="/candidate/interview/:id" element={<InterviewPage />} />
+            <Route path="/candidate/NotificationsSettings" element={<NotificationsSettings />} />
+            <Route path="/candidate/AccountSecuritySettings" element={<AccountSecuritySettings />} />
+            <Route path="/candidate/ThemeSettings" element={<ThemeSettings />} />
+            <Route path="/candidate/practice" element={<PracticePage />} />
+          </Route>
         </Routes>
       </Router>
     </AuthProvider>

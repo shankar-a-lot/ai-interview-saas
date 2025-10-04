@@ -1,0 +1,16 @@
+{
+  "name": "ai-interview-saas",
+  "version": "1.0.0",
+  "description": "AI Interview SaaS Application",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm start --prefix frontend",
+    "build": "npm run build --prefix frontend",
+    "test": "npm test --prefix frontend",
+    "install-frontend": "npm install --prefix frontend",
+    "install-backend": "pip install -r backend/requirements.txt"
+  },
+  "keywords": ["ai", "interview", "saas"],
+  "author": "",
+  "license": "ISC"
+}
