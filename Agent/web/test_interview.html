@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interview Room</title>
+    <link rel="stylesheet" href="test_interview.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Interview Room</h1>
+        <p class="subtitle">Connect to your scheduled interview</p>
+
+        <div class="instructions">
+            <h3>Before You Start:</h3>
+            <ul>
+                <li>Make sure you're in a quiet environment</li>
+                <li>Allow microphone access when prompted</li>
+                <li>Speak clearly and at a normal pace</li>
+                <li>The AI interviewer (Friday) will guide you</li>
+            </ul>
+        </div>
+
+        <div class="input-group">
+            <label for="serverUrl">LiveKit Server URL</label>
+            <input 
+                type="text" 
+                id="serverUrl" 
+                placeholder="wss://your-project.livekit.cloud"
+                value="wss://ai-powered-interview-platform-eg20bf85.livekit.cloud"
+            >
+        </div>
+
+        <div class="input-group">
+            <label for="token">Access Token</label>
+            <textarea 
+                id="token" 
+                placeholder="Paste your access token here..."
+            ></textarea>
+        </div>
+
+        <button id="connectBtn" onclick="connect()">Join Interview</button>
+        <button id="disconnectBtn" onclick="disconnect()">Leave Interview</button>
+
+        <div id="status" class="status"></div>
+
+        <div id="participantInfo" class="participant-info">
+            <h3 style="margin-bottom: 10px; color: #333;">Room Participants:</h3>
+            <div id="participantList"></div>
+        </div>
+    </div>
+
+    <!-- Load LiveKit SDK from multiple sources for reliability -->
+    <script>
+        // Try loading from primary CDN
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/livekit-client@2.5.7/dist/livekit-client.umd.min.js';
+        script.onerror = function() {
+            console.warn('Primary CDN failed, trying backup...');
+            // Fallback to unpkg
+            const backupScript = document.createElement('script');
+            backupScript.src = 'https://unpkg.com/livekit-client@2.5.7/dist/livekit-client.umd.min.js';
+            backupScript.onload = function() {
+                console.log('Backup CDN loaded successfully');
+            };
+            backupScript.onerror = function() {
+                console.error('All CDN sources failed');
+                document.getElementById('status').textContent = 'Failed to load LiveKit SDK. Please check your internet connection.';
+                document.getElementById('status').className = 'status error';
+            };
+            document.head.appendChild(backupScript);
+        };
+        script.onload = function() {
+            console.log('LiveKit SDK loaded from primary CDN');
+        };
+        document.head.appendChild(script);
+    </script>
+    
+    <script src="test_interview.js"></script>
+</body>
+</html>
