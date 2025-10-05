@@ -15,7 +15,7 @@ async def entrypoint(ctx: JobContext):
     """Called when a participant joins a room"""
     
     print(f"\n{'='*60}")
-    print(f"🤖 AI Agent dispatched to room: {ctx.room.name}")
+    print(f"AI Agent dispatched to room: {ctx.room.name}")
     print(f"{'='*60}\n")
     
     # Connect to the room
